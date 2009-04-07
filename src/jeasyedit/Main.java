@@ -6,14 +6,18 @@
 
 package jeasyedit;
 
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author  patrik
  */
 public class Main extends javax.swing.JFrame {
-
+    
+    TextParser textParser;
     /** Creates new form gui */
     public Main() {
+        textParser = new TextParser();
         initComponents();
     }
 
@@ -27,59 +31,64 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        mainTextArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        fileMenu = new javax.swing.JMenu();
+        newMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        openMenuItem = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JSeparator();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        saveMenuItem = new javax.swing.JMenuItem();
+        saveAsMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        exitMenuItem = new javax.swing.JMenuItem();
+        editMenu = new javax.swing.JMenu();
+        highlightMenuItem = new javax.swing.JMenu();
+        rowNumberCheckBox = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        mainTextArea.setColumns(20);
+        mainTextArea.setRows(5);
+        jScrollPane1.setViewportView(mainTextArea);
 
-        jMenu1.setText("File");
+        fileMenu.setText("File");
 
-        jMenuItem1.setText("New");
-        jMenu1.add(jMenuItem1);
-        jMenu1.add(jSeparator2);
+        newMenuItem.setText("New");
+        fileMenu.add(newMenuItem);
+        fileMenu.add(jSeparator2);
 
-        jMenuItem2.setText("Open");
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator3);
+        openMenuItem.setText("Open");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(openMenuItem);
+        fileMenu.add(jSeparator3);
 
-        jMenuItem3.setText("Save");
-        jMenu1.add(jMenuItem3);
+        saveMenuItem.setText("Save");
+        fileMenu.add(saveMenuItem);
 
-        jMenuItem4.setText("Save As");
-        jMenu1.add(jMenuItem4);
-        jMenu1.add(jSeparator1);
+        saveAsMenuItem.setText("Save As");
+        fileMenu.add(saveAsMenuItem);
+        fileMenu.add(jSeparator1);
 
-        jMenuItem5.setText("Exit");
-        jMenu1.add(jMenuItem5);
+        exitMenuItem.setText("Exit");
+        fileMenu.add(exitMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(fileMenu);
 
-        jMenu2.setText("Edit");
+        editMenu.setText("Edit");
 
-        jMenu3.setText("Highlight");
-        jMenu2.add(jMenu3);
+        highlightMenuItem.setText("Highlight");
+        editMenu.add(highlightMenuItem);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Row Numbers");
-        jMenu2.add(jCheckBoxMenuItem1);
+        rowNumberCheckBox.setSelected(true);
+        rowNumberCheckBox.setText("Row Numbers");
+        editMenu.add(rowNumberCheckBox);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(editMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -103,6 +112,25 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+  
+        String fileName;
+        JFileChooser jfileChooser1 = new JFileChooser();
+        
+        int returnValue = jfileChooser1.showOpenDialog(this);
+        String inString;
+        
+        if (returnValue == JFileChooser.APPROVE_OPTION){            
+                
+                fileName = jfileChooser1.getSelectedFile().getAbsolutePath();
+                         
+                textParser.setFilename(fileName);
+                inString = textParser.readFromFile();
+                
+                mainTextArea.setText(inString);
+        }
+}//GEN-LAST:event_openMenuItemActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -115,21 +143,21 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu highlightMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea mainTextArea;
+    private javax.swing.JMenuItem newMenuItem;
+    private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JCheckBoxMenuItem rowNumberCheckBox;
+    private javax.swing.JMenuItem saveAsMenuItem;
+    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

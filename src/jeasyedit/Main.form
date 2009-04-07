@@ -4,55 +4,58 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="newMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="New"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator2">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="openMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Open"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator3">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="saveMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="saveAsMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save As"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="editMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu3">
+            <Menu class="javax.swing.JMenu" name="highlightMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Highlight"/>
               </Properties>
             </Menu>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="rowNumberCheckBox">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Row Numbers"/>
@@ -109,7 +112,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="mainTextArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
